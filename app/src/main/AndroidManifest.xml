@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Foodilize">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".Ngo_Dashboard"
+            android:label="@string/title_activity_ngo_dashboard"
+            android:theme="@style/Theme.Foodilize.NoActionBar"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
