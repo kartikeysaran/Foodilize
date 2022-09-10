@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Do you know ?"
+        android:textSize="36sp"
+        android:textAlignment="center"
+        android:padding="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:id="@+id/tV_main_head"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/feeding_poor"
+        android:id="@+id/iV_main_head"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tV_main_head"
+        app:layout_constraintRight_toRightOf="parent"
+        app:riv_corner_radius="30dip"
+        android:padding="20dp"
+        app:riv_mutate_background="true"
+        app:riv_tile_mode="repeat"/>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@color/black"
+        android:alpha="0.5"
+        android:padding="20dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintLeft_toLeftOf="@id/iV_main_head"
+        app:layout_constraintRight_toRightOf="@id/iV_main_head"
+        app:layout_constraintTop_toTopOf="@id/iV_main_head"
+        app:layout_constraintBottom_toBottomOf="@id/iV_main_head"
+        app:riv_corner_radius="30dip"
+        app:riv_mutate_background="true"
+        app:riv_tile_mode="repeat"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/iV_main_head"
+        android:text="We waste 7.6 Million tonnes of food each year,\n 70% of this is perfectlty edible"
+        android:padding="25dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tV_main_head"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donate Now"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/iV_main_head"
+        android:padding="20sp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:backgroundTint="#9fb6bc"
+        android:id="@+id/btn_main_donate"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Sign In"
+        app:layout_constraintTop_toBottomOf="@id/btn_main_donate"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tV_main_signIn"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toBottomOf="@+id/tV_main_signIn"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="5dp"
+        android:id="@+id/linearLayout"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:background="#EFD7D0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tV_main_signIn"/>
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="5dp"
+            android:background="#EBE8E7"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tV_main_signIn"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NGO Sign IN"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:id="@+id/tV_main_ngo_signin"
+        android:textColor="#3d5a71"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/tV_main_supplier_signin"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Supplier Sign IN"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tV_main_supplier_signin"
+        android:textColor="#3d5a71"
+        app:layout_constraintTop_toBottomOf="@id/linearLayout"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/tV_main_ngo_signin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="About Us"
+        android:textColor="#3d5a71"
+        app:layout_constraintBottom_toTopOf="@+id/tV_main_team_food"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Team Foodilize ®"
+        android:id="@+id/tV_main_team_food"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="25dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
