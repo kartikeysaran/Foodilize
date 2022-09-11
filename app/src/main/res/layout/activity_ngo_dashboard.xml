@@ -15,7 +15,10 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/pinkdusty" />
+            app:tabTextColor="@color/white"
+            app:tabIndicatorColor="@color/pinkdusty"
+            android:background="@color/black" />
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
@@ -24,12 +27,15 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ks.app.foodilize.MoveableFloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:visibility="gone"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:src="@drawable/icon_add"
+        app:rippleColor="@color/white"
+        android:scaleType="center"
+        app:backgroundTint="@color/white"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

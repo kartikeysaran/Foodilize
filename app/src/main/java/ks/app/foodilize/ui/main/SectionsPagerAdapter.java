@@ -29,7 +29,25 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        return PlaceholderFragment.newInstance(position + 1);
+
+        //TODO: return that fragment
+
+
+        switch (position){
+            case 0:
+                return fragment_ngo_home.newInstance("test", "Test");
+
+            case 1:
+                return fragment_ngo_activity.newInstance("test","Test");
+
+            case 2:
+                return fragment_ngo_profile.newInstance("test", "Test");
+
+            default:
+                return PlaceholderFragment.newInstance(position + 1);
+
+        }
+
     }
 
     @Nullable

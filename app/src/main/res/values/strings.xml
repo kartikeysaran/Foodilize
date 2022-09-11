@@ -2,6 +2,8 @@
     <string name="app_name">Foodilize</string>
     <string name="title_activity_ngo_dashboard">Ngo_Dashboard</string>
     <string name="tab_text_1">Home</string>
-    <string name="tab_text_2">Achievements</string>
+    <string name="tab_text_2">LeaderBoard</string>
     <string name="tab_text_3">Profile</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

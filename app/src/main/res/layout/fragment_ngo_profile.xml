@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.main.fragment_ngo_profile">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/demo_profile"
+            app:riv_corner_radius="50dp"
+            android:padding="10dp"
+            android:id="@+id/iV_ngo_profile_dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="25dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kartikey Saran"
+            android:textColor="@color/fontblue"
+            app:layout_constraintLeft_toRightOf="@id/iV_ngo_profile_dp"
+            app:layout_constraintRight_toLeftOf="@id/iV_ngo_profile_edit"
+            app:layout_constraintTop_toTopOf="@id/iV_ngo_profile_dp"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@id/tV_ngo_profile_role"
+            android:id="@+id/tV_ngo_profile_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NGO Kalyan"
+            app:layout_constraintLeft_toLeftOf="@id/tV_ngo_profile_name"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_name"
+            app:layout_constraintBottom_toBottomOf="@id/iV_ngo_profile_dp"
+            android:id="@+id/tV_ngo_profile_role"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/edit_icon"
+            android:id="@+id/iV_ngo_profile_edit"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tV_ngo_profile_name"
+            app:layout_constraintTop_toTopOf="@id/iV_ngo_profile_dp"
+            app:layout_constraintBottom_toBottomOf="@id/iV_ngo_profile_dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Status"
+            app:layout_constraintTop_toBottomOf="@id/iV_ngo_profile_dp"
+            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tV_ngo_profile_myStatus"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true"
+            android:id="@+id/hS_ngo_profile"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_myStatus"
+
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="😴 Away"
+                    android:textAllCaps="false"
+                    android:layout_marginLeft="25dp"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="☝ Available"
+                    android:alpha="0.5"
+                    android:layout_marginLeft="15dp"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:text="💼 Working"
+                    android:layout_marginLeft="15dp"
+                    android:alpha="0.3"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button"
+                    android:layout_marginLeft="15dp"
+                    android:text="Add New Staus"
+                    android:alpha="0.3"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Dashboard"
+            app:layout_constraintTop_toBottomOf="@id/hS_ngo_profile"
+            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tV_ngo_profile_myDashboard"/>
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/iV_ngo_profile_achievement"
+            android:src="@drawable/icon_achievement"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_myDashboard"
+            android:layout_marginLeft="25dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="30dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toRightOf="@+id/iV_ngo_profile_achievement"
+            android:text="Achievements"
+            app:layout_constraintTop_toTopOf="@id/iV_ngo_profile_achievement"
+            app:layout_constraintBottom_toBottomOf="@id/iV_ngo_profile_achievement"
+            android:layout_marginLeft="20dp"
+            android:textSize="15sp"
+            android:textColor="@color/fontblue"
+            android:id="@+id/tV_ngo_profile_achievement"/>
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:src="@drawable/icon_arrow"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iV_ngo_profile_achievement"
+            app:layout_constraintBottom_toBottomOf="@id/iV_ngo_profile_achievement"
+            android:layout_marginRight="25dp"
+            android:rotation="-90"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="My Account"
+            app:layout_constraintTop_toBottomOf="@id/iV_ngo_profile_achievement"
+            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tV_ngo_profile_myAccount"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign Out"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_myAccount"
+            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/fontblue"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:id="@+id/tV_ngo_profile_signout"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete My Account"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_signout"
+            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
+            android:layout_marginTop="30dp"
+            android:textColor="#b23b3b"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:id="@+id/tV_ngo_profile_delete"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact us"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_delete"
+            app:layout_constraintLeft_toLeftOf="@id/tV_ngo_profile_delete"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tV_ngo_profile_contact"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Team Foodify"
+            android:textStyle="bold"
+            android:textColor="@color/fontblue"
+            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_contact"
+            app:layout_constraintLeft_toLeftOf="@id/tV_ngo_profile_contact"
+            android:layout_marginTop="30dp"
+            android:textSize="15sp"
+            android:id="@+id/tV_ngo_profile_team_foodify"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+</FrameLayout>
