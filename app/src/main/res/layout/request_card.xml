@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="10dp"
+    android:elevation="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/gwyer_hall_demo_supplier"
+            app:riv_corner_radius="50dp"
+            android:layout_margin="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/iV_request_card_image"/>
+        <TextView
+            android:layout_width="0dp"
+            android:id="@+id/tV_request_card_title"
+            android:layout_height="wrap_content"
+            android:text="Gwyer Hall created a request to Foodilize 2kg of food"
+            app:layout_constraintLeft_toRightOf="@+id/iV_request_card_image"
+            android:layout_margin="15dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2 m ago"
+            app:layout_constraintTop_toBottomOf="@+id/tV_request_card_title"
+            app:layout_constraintLeft_toLeftOf="@id/tV_request_card_title"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tV_request_card_time"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3 km away"
+            app:layout_constraintTop_toBottomOf="@+id/tV_request_card_title"
+            app:layout_constraintRight_toRightOf="@id/tV_request_card_title"
+            android:layout_marginTop="10dp"
+            android:id="@+id/tV_request_card_distance"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Accept"
+            android:id="@+id/tV_request_card_accept"
+            android:textColor="@color/dustyred"
+            app:layout_constraintLeft_toRightOf="@id/tV_request_card_decline"
+            app:layout_constraintTop_toTopOf="@id/tV_request_card_decline"
+            app:layout_constraintBottom_toBottomOf="@id/tV_request_card_decline"
+            android:layout_margin="20dp"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Decline"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/fontblue"
+            app:layout_constraintLeft_toLeftOf="@id/tV_request_card_time"
+            app:layout_constraintTop_toBottomOf="@id/tV_request_card_distance"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/tV_request_card_decline"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

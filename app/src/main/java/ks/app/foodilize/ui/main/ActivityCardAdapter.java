@@ -51,7 +51,7 @@ public class ActivityCardAdapter extends RecyclerView.Adapter<ActivityCardAdapte
         if(oR.getDeliveryStatus() == 0) {
             holder.iV_status_img.setImageResource(R.drawable.icon_waiting);
             holder.tV_status_msg.setText(oR.getSuppName()+ " is waiting for someone to foodilize their request of"+ oR.getQuantity()+" kg food.");
-            holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
+            //holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
             holder.cV_container.setCardBackgroundColor(Color.parseColor("#ec2e5f"));
         } else if (oR.getDeliveryStatus() == 1) {
             holder.iV_status_img.setImageResource(R.drawable.icon_otw);
@@ -59,12 +59,12 @@ public class ActivityCardAdapter extends RecyclerView.Adapter<ActivityCardAdapte
             holder.tV_status_msg.setTextColor(Color.parseColor("#3d5a71"));
 
             holder.tV_status_msg.setText(oR.getNgoName()+" is otw to foodilize "+oR.getQuantity()+"kg food from "+oR.getSuppName());
-            holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
+            //holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
             holder.cV_container.setCardBackgroundColor(Color.parseColor("#ffeb00"));
         } else {
             holder.iV_status_img.setImageResource(R.drawable.icon_stareyes);
             holder.tV_status_msg.setText(oR.getNgoName()+" has foodilized "+oR.getQuantity()+"kg food on request from "+oR.getSuppName());
-            holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
+            //holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
             holder.cV_container.setCardBackgroundColor(Color.parseColor("#5A896F"));
         }
     }

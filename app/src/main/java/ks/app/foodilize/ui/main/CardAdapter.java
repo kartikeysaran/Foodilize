@@ -47,11 +47,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         ObjectNC obj = arrayList.get(position);
         holder.tV_rank.setText("#"+String.valueOf(position+1));
         holder.tV_name.setText(obj.getName());
-        if(obj.getType() == 0) {
-            holder.iV_profile.setImageResource(R.drawable.ngo_demo_dp);
-        }
-        //TODO: Load Images
-        //new Utils.DownloadImageTask((RoundedImageView) holder.iV_profile).execute(obj.getImgUrl());
+        holder.iV_profile.setImageBitmap(Utils.StringToBitMap(obj.getImgUrl()));
     }
 
     @Override

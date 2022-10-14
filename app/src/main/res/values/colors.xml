@@ -15,5 +15,6 @@
     <color name="dustygreen">#5A896F</color>
     <color name="dustyred">#ec2e5f</color>
     <color name="dustyyellow">#ffeb00</color>
+    <color name="dustygrey">#c0c0c0</color>
 
 </resources>

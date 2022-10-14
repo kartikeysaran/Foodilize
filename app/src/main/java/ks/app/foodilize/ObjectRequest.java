@@ -1,18 +1,31 @@
 package ks.app.foodilize;
 
-public class ObjectRequest {
-    private int id;
-    //TODO: Name of NGO and Supplier can be fetched using id from database
-    private int ngoId;
-    private int suppId;
+import java.io.Serializable;
+
+public class ObjectRequest implements Serializable {
+    private String id;
+    private String ngoId;
+    private String suppId;
     private String ngoName;
     private String suppName;
     private int deliveryStatus; //0 for order received, 1 for on way to receive order, 2 for order delivered
     private String time;
+    private String desc;
     private int quantity; //in kgs
 
-    public ObjectRequest(int id, int ngoId, int suppId, String ngoName, String suppName, int deliveryStatus, String time, int quantity) {
-        this.id = id;
+    public String getDesc() {
+        return desc;
+    }
+
+    public ObjectRequest() {
+
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
+
+    public ObjectRequest(String ngoId, String suppId, String ngoName, String suppName, int deliveryStatus, String time, int quantity, String desc) {
         this.ngoId = ngoId;
         this.suppId = suppId;
         this.ngoName = ngoName;
@@ -20,29 +33,30 @@ public class ObjectRequest {
         this.deliveryStatus = deliveryStatus;
         this.time = time;
         this.quantity = quantity;
+        this.desc = desc;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public int getNgoId() {
+    public String getNgoId() {
         return ngoId;
     }
 
-    public void setNgoId(int ngoId) {
+    public void setNgoId(String ngoId) {
         this.ngoId = ngoId;
     }
 
-    public int getSuppId() {
+    public String getSuppId() {
         return suppId;
     }
 
-    public void setSuppId(int suppId) {
+    public void setSuppId(String suppId) {
         this.suppId = suppId;
     }
 

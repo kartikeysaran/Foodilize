@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1031626919124",
+    "project_id": "foodilize",
+    "storage_bucket": "foodilize.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1031626919124:android:1d9a122eccf1a90b9b7f41",
+        "android_client_info": {
+          "package_name": "ks.app.foodilize"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1031626919124-dnaipauj3ct5ke1hm2lj3c20uhnlna2k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCT0Ghbgvi7C3QXldvI6V49H6sax9su6tA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1031626919124-dnaipauj3ct5ke1hm2lj3c20uhnlna2k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

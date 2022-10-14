@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".sing_in_form">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_margin="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/tV_sign_in_sign_up"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tV_sign_in_sign_up"
+        android:text="Let us know about your self"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tV_sign_in_letusknow"/>
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:id="@+id/tV_sign_in_radio"
+        app:layout_constraintTop_toBottomOf="@id/tV_sign_in_letusknow"
+        app:layout_constraintLeft_toLeftOf="parent">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NGO"
+            android:id="@+id/ngo"/>
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Supplier"
+            android:layout_marginLeft="25dp"
+            android:id="@+id/supplier"/>
+
+    </RadioGroup>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/demo_profile"
+        app:riv_corner_radius="50dp"
+        app:layout_constraintTop_toBottomOf="@id/tV_sign_in_radio"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:padding="10dp"
+        android:alpha="0.4"
+        android:id="@+id/img_profile_sign_in"/>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintRight_toRightOf="@id/img_profile_sign_in"
+        app:layout_constraintBottom_toBottomOf="@id/img_profile_sign_in"
+        android:src="@drawable/icon_add"
+        android:id="@+id/img_sign_in_icon_add"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Organization Name"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toBottomOf="@id/img_profile_sign_in"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:id="@+id/tV_sign_in_org_name"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contact Number"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tV_sign_in_org_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:id="@+id/tV_sign_in_org_contact"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contact Person Name"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tV_sign_in_org_contact"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:id="@+id/tV_sign_in_org_contact_person"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="30dp"
+        app:layout_constraintTop_toBottomOf="@id/tV_sign_in_org_contact_person"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="30dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:id="@+id/tV_sign_in_org_address"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        app:layout_constraintTop_toBottomOf="@id/tV_sign_in_org_address"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_margin="30dp"
+        android:padding="10dp"
+        android:id="@+id/btn_sing_in_org_next"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

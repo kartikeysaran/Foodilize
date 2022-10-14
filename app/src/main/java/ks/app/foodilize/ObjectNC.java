@@ -1,17 +1,42 @@
 package ks.app.foodilize;
 
-public class ObjectNC {
-    private int id;
+import java.io.Serializable;
+
+public class ObjectNC implements Serializable {
+    private String id;
     private String name;
     private String address;
     private String contact_name;
     private String contact_number;
     private double lat;
+    private String status;
     private double lon;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    private String emailId;
     private String imgUrl;
     private int type; //0 is for NGO and 1 is for Supplier
 
-    public ObjectNC(int id, String name, String address, String contact_name, String contact_number, double lat, double lon, String imgUrl, int type) {
+    public ObjectNC() {
+
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public ObjectNC(String id, String name, String address, String contact_name, String contact_number, double lat, double lon, String imgUrl, int type, String emailId, String status) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -21,6 +46,8 @@ public class ObjectNC {
         this.lon = lon;
         this.imgUrl = imgUrl;
         this.type = type;
+        this.emailId = emailId;
+        this.status = status;
     }
 
     public int getType() {
@@ -32,11 +59,11 @@ public class ObjectNC {
     }
 
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

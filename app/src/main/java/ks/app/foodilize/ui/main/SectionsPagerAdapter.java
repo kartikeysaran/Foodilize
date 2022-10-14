@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import ks.app.foodilize.R;
+import ks.app.foodilize.Utils;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -35,13 +36,17 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         switch (position){
             case 0:
-                return fragment_ngo_home.newInstance("test", "Test");
+                if(Utils.currentUser.getType() == 0 ) {
+                    return fragment_ngo_home.newInstance();
+                } else {
+                    return fragment_supplier_home.newInstance();
+                }
 
             case 1:
-                return fragment_ngo_activity.newInstance("test","Test");
+                return fragment_ngo_activity.newInstance();
 
             case 2:
-                return fragment_ngo_profile.newInstance("test", "Test");
+                return fragment_ngo_profile.newInstance();
 
             default:
                 return PlaceholderFragment.newInstance(position + 1);

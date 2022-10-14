@@ -3,8 +3,12 @@ package ks.app.foodilize;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
+import android.util.Base64;
 import android.util.Log;
 import android.widget.ImageView;
+
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -12,8 +16,15 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Utils {
+
+    public static ObjectNC currentUser;
+    public static FirebaseFirestore db = FirebaseFirestore.getInstance();
+
     public static class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {
         ImageView bmImage;
+
+
+
 
         public DownloadImageTask(ImageView bmImage) {
             this.bmImage = bmImage;
@@ -94,6 +105,20 @@ public class Utils {
         } catch (Exception e) {
             e.printStackTrace();
             return "";
+        }
+    }
+
+    public static GoogleSignInAccount account;
+
+    public static Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte = Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }
+        catch(Exception e){
+            e.getMessage();
+            return null;
         }
     }
 }
