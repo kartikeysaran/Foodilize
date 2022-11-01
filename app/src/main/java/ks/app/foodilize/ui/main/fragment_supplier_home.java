@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -36,6 +37,7 @@ public class fragment_supplier_home extends Fragment {
     RecyclerView rvSelfReqeust;
     SwipeRefreshLayout swipeRefreshLayout;
     TextView tV;
+    RelativeLayout noResults;
     public fragment_supplier_home() {
     }
 
@@ -47,7 +49,7 @@ public class fragment_supplier_home extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        callData();
     }
 
     @Override
@@ -59,18 +61,24 @@ public class fragment_supplier_home extends Fragment {
         rvSelfReqeust = view.findViewById(R.id.rV_self_activity_supplier_home);
         swipeRefreshLayout = view.findViewById(R.id.sRL_supplier_home);
         tV = view.findViewById(R.id.tV_supplier_home_request_history);
+        noResults = view.findViewById(R.id.supplier_home_no_result_found);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 callData();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
-        callData();
-
         return view;
     }
 
     private void callData() {
+        /*
+        for(int i = 0; i < arrayList.size(); i++) {
+            arrayList.remove(i);
+            activityCardAdapter.notifyItemRemoved(i);
+        }*/
+        arrayList = new ArrayList<>();
         Utils.db.collection("requests")
                 .whereEqualTo("suppId", Utils.currentUser.getId())
                 .get()
@@ -89,20 +97,15 @@ public class fragment_supplier_home extends Fragment {
                                 rvSelfReqeust.setLayoutManager(linearLayoutManager3);
                                 rvSelfReqeust.setAdapter(activityCardAdapter);
                             } else {
-                                rvSelfReqeust.setVisibility(View.GONE);
-                                tV.setVisibility(View.GONE);
+                                noResults.setVisibility(View.VISIBLE);
                             }
 
                         } else {
+                            noResults.setVisibility(View.VISIBLE);
                         }
                     }
                 });
 
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        arrayList.clear();
-    }
 }

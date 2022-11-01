@@ -1,6 +1,7 @@
 package ks.app.foodilize;
 
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -15,6 +17,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import ks.app.foodilize.ui.main.ActivityCardAdapter;
@@ -39,12 +42,13 @@ public class AcceptedCardAdapter extends RecyclerView.Adapter<AcceptedCardAdapte
         return new ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         ObjectRequest oR = arrayList.get(position);
         holder.title.setText("You are on your way to accept "+oR.getSuppName()+" foodilize request of "+ oR.getQuantity() +" food");
         holder.delivered.setOnClickListener(v->{
-            oR.setTime(String.valueOf(System.currentTimeMillis()));
+            oR.setTime(String.valueOf(LocalDateTime.now()));
             oR.setDeliveryStatus(2);
             Utils.db.collection("requests")
                     .document(oR.getId())

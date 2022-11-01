@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f3f4f5"
+    tools:context=".ViewNGO">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:id="@+id/iV_view_ngo_profile"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/delivered"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_wave2"
+        app:layout_constraintBottom_toBottomOf="@+id/iV_view_ngo_profile"
+        android:scaleType="centerCrop"
+        android:id="@+id/iV_view_ngo_wave"
+        android:layout_marginBottom="-30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Annadata"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="200dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/tV_view_ngo_name"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Available"
+        app:layout_constraintTop_toBottomOf="@+id/tV_view_ngo_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/black"
+        android:id="@+id/tV_view_ngo_status"
+        android:layout_marginTop="8dp"
+        />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/chat2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="200dp"
+        android:id="@+id/iV_view_ngo_chat"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintRight_toLeftOf="@+id/iV_view_ngo_chat"
+        android:src="@drawable/call"
+        android:layout_marginRight="15dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="@id/iV_view_ngo_chat"
+        app:layout_constraintBottom_toBottomOf="@id/iV_view_ngo_chat"
+        android:id="@+id/iV_view_ngo_call"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintRight_toLeftOf="@+id/iV_view_ngo_call"
+        android:src="@drawable/map"
+        android:layout_marginRight="15dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="@id/iV_view_ngo_chat"
+        app:layout_constraintBottom_toBottomOf="@id/iV_view_ngo_chat"
+        android:id="@+id/iV_view_ngo_map"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact Person Name - "
+        app:layout_constraintTop_toBottomOf="@id/tV_view_ngo_status"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="20dp"
+        android:id="@+id/tV_view_ngo_cont"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rakesh"
+        app:layout_constraintLeft_toRightOf="@+id/tV_view_ngo_cont"
+        app:layout_constraintTop_toTopOf="@id/tV_view_ngo_cont"
+        app:layout_constraintBottom_toBottomOf="@id/tV_view_ngo_cont"
+        android:textColor="@color/black"
+        android:id="@+id/tV_view_ngo_cont_name"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tV_view_ngo_cont_name"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Request History"
+        android:layout_margin="20dp"
+        android:id="@+id/tV_view_ngo_request_history"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tV_view_ngo_request_history"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:id="@+id/rV_view_ngo"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

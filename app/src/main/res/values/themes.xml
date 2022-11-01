@@ -25,4 +25,5 @@
     <style name="Theme.Foodilize.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.Foodilize.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>

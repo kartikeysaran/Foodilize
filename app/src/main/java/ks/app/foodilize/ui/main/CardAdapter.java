@@ -1,5 +1,6 @@
 package ks.app.foodilize.ui.main;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import ks.app.foodilize.ObjectNC;
 import ks.app.foodilize.R;
 import ks.app.foodilize.Utils;
+import ks.app.foodilize.ViewNGO;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -48,6 +50,11 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder>{
         holder.tV_rank.setText("#"+String.valueOf(position+1));
         holder.tV_name.setText(obj.getName());
         holder.iV_profile.setImageBitmap(Utils.StringToBitMap(obj.getImgUrl()));
+        holder.container.setOnClickListener(v->{
+            Intent i = new Intent(context, ViewNGO.class);
+            i.putExtra("USER", obj);
+            context.startActivity(i);
+        });
     }
 
     @Override

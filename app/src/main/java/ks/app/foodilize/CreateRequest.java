@@ -1,8 +1,10 @@
 package ks.app.foodilize;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.EditText;
 
@@ -10,6 +12,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +22,7 @@ public class CreateRequest extends AppCompatActivity {
 
     EditText eT_quan, eT_desc;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +31,7 @@ public class CreateRequest extends AppCompatActivity {
         eT_desc = findViewById(R.id.eV_create_request_desc_opt);
 
         findViewById(R.id.btn_create_request).setOnClickListener(v->{
-            ObjectRequest oR = new ObjectRequest("", Utils.currentUser.getId(), "", Utils.currentUser.getName(), 0,String.valueOf(System.currentTimeMillis()), Integer.parseInt(eT_quan.getText().toString()), eT_desc.getText().toString());
+            ObjectRequest oR = new ObjectRequest("", Utils.currentUser.getId(), "", Utils.currentUser.getName(), 0,String.valueOf(LocalDateTime.now()), Integer.parseInt(eT_quan.getText().toString()), eT_desc.getText().toString());
 
             Map<String, Object> request = new HashMap<>();
             request.put("ngoId", oR.getNgoId());

@@ -58,6 +58,7 @@ public class fragment_ngo_activity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        callData();
     }
 
     @Override
@@ -75,6 +76,7 @@ public class fragment_ngo_activity extends Fragment {
             @Override
             public void onRefresh() {
                 callData();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
 
@@ -83,6 +85,10 @@ public class fragment_ngo_activity extends Fragment {
     }
 
     private void callData() {
+
+        topNgo = new ArrayList<>();
+        topSupplier = new ArrayList<>();
+        arrayList = new ArrayList<>();
         Utils.db.collection("requests")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -210,9 +216,5 @@ public class fragment_ngo_activity extends Fragment {
         return temp;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        arrayList.clear();
-    }
+
 }

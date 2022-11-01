@@ -1,15 +1,18 @@
 package ks.app.foodilize;
 
+import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import android.content.Context;
 import android.widget.TextView;
@@ -40,6 +43,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
         return new RequestAdapter.ViewHolder(view);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(@NonNull @NotNull RequestAdapter.ViewHolder holder, int position) {
         ObjectRequest oR = arrayList.get(position);
@@ -49,7 +53,7 @@ public class RequestAdapter extends RecyclerView.Adapter<RequestAdapter.ViewHold
                 oR.setDeliveryStatus(1);
                 oR.setNgoId(Utils.currentUser.getId());
                 oR.setNgoName(Utils.currentUser.getName());
-                oR.setTime(String.valueOf(System.currentTimeMillis()));
+                oR.setTime(String.valueOf(LocalDateTime.now()));
 
                 Utils.db.collection("requests")
                         .document(oR.getId())

@@ -33,15 +33,49 @@
                     android:textSize="10sp"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_margin="10dp"/>
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Create new request"
+                    app:layout_constraintTop_toBottomOf="@id/sV_supplier_home_search"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:layout_margin="30dp"
+                    android:id="@+id/btn_supplier_home_create_request"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Request History"
                     android:id="@+id/tV_supplier_home_request_history"
-                    app:layout_constraintTop_toBottomOf="@id/sV_supplier_home_search"
+                    app:layout_constraintTop_toBottomOf="@id/btn_supplier_home_create_request"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:padding="10dp"
+                    android:visibility="invisible"
+                    app:layout_constraintTop_toBottomOf="@id/tV_supplier_home_request_history"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    android:id="@+id/supplier_home_no_result_found"
+                    >
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/no_result"
+                        android:id="@+id/iV_no_result"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No Results Found! Please try again later :)"
+                        android:layout_alignBottom="@+id/iV_no_result"
+                        android:layout_centerHorizontal="true"/>
+                </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
@@ -49,19 +83,8 @@
                     app:layout_constraintTop_toBottomOf="@id/tV_supplier_home_request_history"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    android:layout_margin="20dp"
                     android:id="@+id/rV_self_activity_supplier_home"/>
 
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create new request"
-                    app:layout_constraintTop_toBottomOf="@id/rV_self_activity_supplier_home"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    android:layout_margin="30dp"
-                    android:id="@+id/btn_supplier_home_create_request"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

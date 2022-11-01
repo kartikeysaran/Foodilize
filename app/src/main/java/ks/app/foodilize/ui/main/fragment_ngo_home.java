@@ -41,7 +41,6 @@ public class fragment_ngo_home extends Fragment {
     ArrayList<ObjectRequest> arrayList, arrayList1;
     AcceptedCardAdapter acceptedCardAdapter;
 
-
     public fragment_ngo_home() {
 
     }
@@ -73,15 +72,26 @@ public class fragment_ngo_home extends Fragment {
             @Override
             public void onRefresh() {
                 callData();
+                swipeRefreshLayout.setRefreshing(false);
             }
         });
-
-        callData();
+        rV_request.setOnClickListener(v->{
+            callData();
+        });
 
         return view;
     }
 
     private void callData() {
+
+        for(int i = 0; i < arrayList.size(); i++) {
+            arrayList.remove(i);
+            requestAdapter.notifyItemRemoved(i);
+        }
+        for(int i=0; i<arrayList1.size(); i++) {
+            arrayList1.remove(i);
+            acceptedCardAdapter.notifyItemRemoved(i);
+        }
         Utils.db.collection("requests")
                 .orderBy("time", Query.Direction.DESCENDING)
                 .get()

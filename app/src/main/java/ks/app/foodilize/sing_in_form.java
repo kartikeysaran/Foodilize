@@ -2,25 +2,34 @@ package ks.app.foodilize;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,26 +49,18 @@ import java.util.Map;
 
 public class sing_in_form extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_PERMISSION = 2;
-    String mPermission = Manifest.permission.ACCESS_FINE_LOCATION;
-    GPSTracker gps;
-    private int id;
-    private String name;
-    private String address;
-    private String contact_name;
-    private String contact_number;
     private double lat;
     private double lon;
-    private String imgUrl;
-    private int type;
+    private int type = 0;
 
     EditText edt_name, edt_cont_name, edt_cont_number, edt_address;
-    RadioButton rB_ngo, rB_supplier;
-    RadioGroup rG;
+
     RoundedImageView profile;
-    ImageView add_Profile;
+    TextView uploadText;
     private String Document_img1="";
     GoogleSignInAccount account;
+    Switch aSwitch;
+    TextView tVswitchNGO, tVswitchSupp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,53 +69,63 @@ public class sing_in_form extends AppCompatActivity {
 
         Intent intent = getIntent();
         account = intent.getParcelableExtra("account");
-        Utils.db = FirebaseFirestore.getInstance();
-
-        try {
-            if (ActivityCompat.checkSelfPermission(this, mPermission) != PackageManager.PERMISSION_GRANTED) {
-
-                ActivityCompat.requestPermissions(this, new String[]{mPermission},
-                        REQUEST_CODE_PERMISSION);
-
-                // If any permission above not allowed by user, this condition willexecute every time, else your else part will work
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        gps = new GPSTracker(sing_in_form.this);
-
-        // check if GPS enabled
-        if(gps.canGetLocation()){
-
-            lat = gps.getLatitude();
-            lon = gps.getLongitude();
-
-        }else{
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
-        }
+        tVswitchNGO = findViewById(R.id.tV_switch_NGO);
+        tVswitchSupp = findViewById(R.id.tV_switch_supp);
 
         edt_address = findViewById(R.id.tV_sign_in_org_address);
         edt_name = findViewById(R.id.tV_sign_in_org_name);
         edt_cont_name = findViewById(R.id.tV_sign_in_org_contact_person);
         edt_cont_number = findViewById(R.id.tV_sign_in_org_contact);
-        rB_ngo = findViewById(R.id.ngo);
-        rB_supplier = findViewById(R.id.supplier);
-        rG = findViewById(R.id.tV_sign_in_radio);
-        add_Profile = findViewById(R.id.img_sign_in_icon_add);
+
+        aSwitch = findViewById(R.id.switch_NGO_Supp);
+
+        uploadText = findViewById(R.id.tV_sign_in_upload);
         profile = findViewById(R.id.img_profile_sign_in);
 
         profile.setOnClickListener(v->{
             selectImage();
         });
 
+        aSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(!b) {
+                    type = 0;
+                    tVswitchNGO.setTypeface(null, Typeface.BOLD);
+                    tVswitchSupp.setTypeface(null, Typeface.NORMAL);
+                    if(Document_img1.isEmpty()) {
+                        profile.setImageResource(R.drawable.demo_ngo_build);
+                    }
+                } else {
+                    type = 1;
+                    tVswitchNGO.setTypeface(null, Typeface.NORMAL);
+                    tVswitchSupp.setTypeface(null, Typeface.BOLD);
+                    if(Document_img1.isEmpty()) {
+                        profile.setImageResource(R.drawable.demo_user);
+                    }
+                }
+            }
+        });
+
         findViewById(R.id.btn_sing_in_org_next).setOnClickListener(v->{
-            if(edt_name.getText().toString().isEmpty() || edt_cont_number.getText().toString().isEmpty() || edt_cont_name.getText().toString().isEmpty()|| edt_address.getText().toString().isEmpty() || rG.getCheckedRadioButtonId() == -1 || Document_img1.isEmpty()) {
+            if(edt_name.getText().toString().isEmpty()) {
+                 edt_name.setError("Cannot be left empty");
+            } else if (edt_cont_number.getText().toString().isEmpty()) {
+                edt_cont_number.setError("Cannot be left empty");
+            } else if (edt_cont_name.getText().toString().isEmpty()) {
+                edt_cont_name.setError("Cannot be left empty");
+            } else if (edt_address.getText().toString().isEmpty()){
+                edt_address.setError("Cannot be left empty");
+            } else if (Document_img1.isEmpty()) {
+                Toast.makeText(this, "Please Upload a Picture", Toast.LENGTH_SHORT).show();
             } else {
-                //TODO: Create user and save into database and forward it to dashboard
+                ProgressDialog progressBar = new ProgressDialog(this);
+                progressBar.setCancelable(false);
+                progressBar.setMessage("Setting up your profile");
+                //progressBar.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                progressBar.setProgress(0);
+                progressBar.setMax(100);
+                progressBar.show();
                 Map<String, Object> user = new HashMap<>();
                 user.put("id", account.getId());
                 user.put("emailId", account.getEmail());
@@ -126,13 +137,14 @@ public class sing_in_form extends AppCompatActivity {
                 user.put("lon", lon);
                 user.put("imgUrl", Document_img1);
                 user.put("status", "available");
-                type = rB_ngo.isChecked()?0:1;
+                //type = rB_ngo.isChecked()?0:1;
                 user.put("type", type);
                 Utils.db.collection("users")
                         .add(user)
                         .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
                             public void onSuccess(DocumentReference documentReference) {
+                                progressBar.setProgress(100);
                                 Utils.currentUser = new ObjectNC(account.getId(), edt_name.getText().toString(), edt_address.getText().toString(), edt_cont_name.getText().toString(), edt_cont_number.getText().toString(), lat, lon, Document_img1, type, account.getEmail(), "Available");
                                 startActivity(new Intent(sing_in_form.this, Ngo_Dashboard.class));
                                 finish();
@@ -141,7 +153,10 @@ public class sing_in_form extends AppCompatActivity {
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-
+                                progressBar.setProgress(100);
+                                progressBar.dismiss();
+                                Toast.makeText(sing_in_form.this, "Error! "+e.getLocalizedMessage() , Toast.LENGTH_SHORT).show();
+                                Log.e("SIGNUP", e.getMessage());
                             }
                         });
             }
@@ -194,7 +209,7 @@ public class sing_in_form extends AppCompatActivity {
                     BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
                     bitmap = BitmapFactory.decodeFile(f.getAbsolutePath(), bitmapOptions);
                     bitmap=getResizedBitmap(bitmap, 400);
-                    add_Profile.setVisibility(View.GONE);
+                    uploadText.setVisibility(View.GONE);
                     BitMapToString(bitmap);
                     String path = android.os.Environment
                             .getExternalStorageDirectory()
@@ -222,13 +237,17 @@ public class sing_in_form extends AppCompatActivity {
                 Uri selectedImage = data.getData();
                 try {
                     Bitmap thumbnail = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                    add_Profile.setVisibility(View.GONE);
+                    uploadText.setVisibility(View.GONE);
                     thumbnail=getResizedBitmap(thumbnail, 400);
                     BitMapToString(thumbnail);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
+            }
+            if(!Document_img1.isEmpty()) {
+                profile.setImageBitmap(Utils.StringToBitMap(Document_img1));
+                profile.setAlpha(1f);
             }
         }
     }
@@ -238,8 +257,6 @@ public class sing_in_form extends AppCompatActivity {
         userImage1.compress(Bitmap.CompressFormat.PNG, 60, baos);
         byte[] b = baos.toByteArray();
         Document_img1 = Base64.encodeToString(b, Base64.DEFAULT);
-        profile.setImageBitmap(Utils.StringToBitMap(Document_img1));
-        profile.setAlpha(1);
         return Document_img1;
     }
 
