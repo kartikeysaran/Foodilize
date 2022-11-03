@@ -29,6 +29,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 
 import org.jetbrains.annotations.NotNull;
 
+import ks.app.foodilize.AboutUs;
 import ks.app.foodilize.MainActivity;
 import ks.app.foodilize.ObjectRequest;
 import ks.app.foodilize.R;
@@ -38,9 +39,10 @@ import ks.app.foodilize.Utils;
 public class fragment_ngo_profile extends Fragment {
 
     RoundedImageView rIV_pic;
-    TextView tV_ngo_name, tV_ngo_cont_name, tV_sign_out, tV_delete_account;
+    TextView tV_ngo_name, tV_ngo_cont_name, tV_sign_out, tV_delete_account, tV_contactUs;
     SwipeRefreshLayout swipeRefreshLayout;
     Button status_away, status_available, status_working;
+
 
     public fragment_ngo_profile() {
     }
@@ -69,6 +71,11 @@ public class fragment_ngo_profile extends Fragment {
         status_available = view.findViewById(R.id.btn_profile_status_available);
         status_away = view.findViewById(R.id.btn_profile_status_away);
         status_working = view.findViewById(R.id.btn_profile_status_working);
+        tV_contactUs = view.findViewById(R.id.tV_ngo_profile_team_foodilize);
+
+        tV_contactUs.setOnClickListener(v->{
+            getContext().startActivity(new Intent(getContext(), AboutUs.class));
+        });
 
         //TODO: Set the status by fetching it from the database
         if(Utils.currentUser.getStatus()!=null || !Utils.currentUser.getStatus().isEmpty()) {
@@ -120,8 +127,8 @@ public class fragment_ngo_profile extends Fragment {
         });
 
         rIV_pic.setImageBitmap(Utils.StringToBitMap(Utils.currentUser.getImgUrl()));
-        tV_ngo_name.setText(Utils.currentUser.getName());
-        tV_ngo_cont_name.setText(Utils.currentUser.getContact_name());
+        tV_ngo_name.setText(Utils.currentUser.getContact_name());
+        tV_ngo_cont_name.setText(Utils.currentUser.getName());
         tV_sign_out.setOnClickListener(v->{
             GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestEmail()

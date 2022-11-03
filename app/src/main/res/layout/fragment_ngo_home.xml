@@ -35,11 +35,26 @@
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_margin="10dp"/>
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/sV_ngo_home_search"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    android:id="@+id/cardView_ngo_home"
+                    app:layout_constraintRight_toRightOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rV_accepted_request"/>
+
+                </androidx.cardview.widget.CardView>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Requests"
-                    app:layout_constraintTop_toBottomOf="@id/sV_ngo_home_search"
+                    app:layout_constraintTop_toBottomOf="@id/cardView_ngo_home"
                     app:layout_constraintLeft_toLeftOf="parent"
                     android:layout_marginLeft="30dp"
                     android:layout_marginTop="20dp"
@@ -56,19 +71,7 @@
                     android:layout_marginTop="10dp"
                     android:id="@+id/rV_ngo_home_requests"/>
 
-               <androidx.cardview.widget.CardView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   app:layout_constraintBottom_toBottomOf="parent"
-                   app:layout_constraintLeft_toLeftOf="parent"
-                   app:layout_constraintRight_toRightOf="parent">
 
-                   <androidx.recyclerview.widget.RecyclerView
-                       android:layout_width="match_parent"
-                       android:layout_height="wrap_content"
-                       android:id="@+id/rV_accepted_request"/>
-
-               </androidx.cardview.widget.CardView>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

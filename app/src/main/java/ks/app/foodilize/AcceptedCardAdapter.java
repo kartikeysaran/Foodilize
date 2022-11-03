@@ -1,15 +1,20 @@
 package ks.app.foodilize;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,6 +26,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import ks.app.foodilize.ui.main.ActivityCardAdapter;
+import pl.droidsonroids.gif.GifImageView;
 
 public class AcceptedCardAdapter extends RecyclerView.Adapter<AcceptedCardAdapter.ViewHolder> {
 
@@ -47,25 +53,42 @@ public class AcceptedCardAdapter extends RecyclerView.Adapter<AcceptedCardAdapte
     public void onBindViewHolder(@NonNull @NotNull ViewHolder holder, int position) {
         ObjectRequest oR = arrayList.get(position);
         holder.title.setText("You are on your way to accept "+oR.getSuppName()+" foodilize request of "+ oR.getQuantity() +" food");
+        holder.container.setOnClickListener(v->{
+            Intent i = new Intent(context, ViewRequest.class);
+            i.putExtra("REQUEST", oR);
+            context.startActivity(i);
+        });
         holder.delivered.setOnClickListener(v->{
+            holder.title.setText("Thankyou! You are a Superhero");
+            holder.bg.setImageResource(R.drawable.delivered);
+            holder.gifs.setVisibility(View.VISIBLE);
+            holder.delivered.setVisibility(View.INVISIBLE);
             oR.setTime(String.valueOf(LocalDateTime.now()));
             oR.setDeliveryStatus(2);
-            Utils.db.collection("requests")
-                    .document(oR.getId())
-                    .set(oR)
-                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+            new java.util.Timer().schedule(
+                    new java.util.TimerTask() {
                         @Override
-                        public void onSuccess(Void unused) {
-                            arrayList.remove(oR);
-                            notifyItemRemoved(position);
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull @NotNull Exception e) {
+                        public void run() {
+                            Utils.db.collection("requests")
+                                    .document(oR.getId())
+                                    .set(oR)
+                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            arrayList.remove(oR);
+                                            notifyItemRemoved(position);
+                                        }
+                                    })
+                                    .addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull @NotNull Exception e) {
 
+                                        }
+                                    });
                         }
-                    });
+                    },
+                    1000
+            );
         });
 
     }
@@ -77,11 +100,17 @@ public class AcceptedCardAdapter extends RecyclerView.Adapter<AcceptedCardAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView title;
-        TextView delivered;
+        Button delivered;
+        LinearLayout gifs;
+        ImageView bg;
+        ConstraintLayout container;
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            delivered = itemView.findViewById(R.id.tV_accepted_request_delivered);
+            delivered = itemView.findViewById(R.id.btn_accepted_request_delivered);
             title = itemView.findViewById(R.id.tV_accepted_request_title);
+            gifs = itemView.findViewById(R.id.lL_gifs);
+            bg = itemView.findViewById(R.id.iV_accepted_card_bg);
+            container = itemView.findViewById(R.id.container_accepted_request);
         }
     }
 }

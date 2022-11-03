@@ -38,6 +38,7 @@ public class fragment_supplier_home extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     TextView tV;
     RelativeLayout noResults;
+
     public fragment_supplier_home() {
     }
 
@@ -49,7 +50,7 @@ public class fragment_supplier_home extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        callData();
+        //callData();
     }
 
     @Override
@@ -73,11 +74,7 @@ public class fragment_supplier_home extends Fragment {
     }
 
     private void callData() {
-        /*
-        for(int i = 0; i < arrayList.size(); i++) {
-            arrayList.remove(i);
-            activityCardAdapter.notifyItemRemoved(i);
-        }*/
+
         arrayList = new ArrayList<>();
         Utils.db.collection("requests")
                 .whereEqualTo("suppId", Utils.currentUser.getId())
@@ -108,4 +105,9 @@ public class fragment_supplier_home extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        callData();
+    }
 }

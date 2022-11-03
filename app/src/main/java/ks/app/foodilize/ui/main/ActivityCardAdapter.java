@@ -1,6 +1,7 @@
 package ks.app.foodilize.ui.main;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
 import android.view.LayoutInflater;
@@ -24,6 +25,7 @@ import com.makeramen.roundedimageview.RoundedImageView;
 import ks.app.foodilize.ObjectRequest;
 import ks.app.foodilize.R;
 import ks.app.foodilize.Utils;
+import ks.app.foodilize.ViewRequest;
 import pl.droidsonroids.gif.GifImageView;
 
 public class ActivityCardAdapter extends RecyclerView.Adapter<ActivityCardAdapter.ViewHolder> {
@@ -67,6 +69,11 @@ public class ActivityCardAdapter extends RecyclerView.Adapter<ActivityCardAdapte
             holder.tV_status_msg.setText(oR.getNgoName()+" has foodilized "+oR.getQuantity()+" kg food on request from "+oR.getSuppName());
             holder.tV_status_time.setText(Utils.getTimeDifference(oR.getTime()));
         }
+        holder.cV_container.setOnClickListener(v->{
+            Intent i = new Intent(context, ViewRequest.class);
+            i.putExtra("REQUEST", oR);
+            context.startActivity(i);
+        });
     }
 
     @Override

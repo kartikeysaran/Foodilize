@@ -5,6 +5,7 @@
     app:cardCornerRadius="20dp"
     android:layout_margin="10dp"
     android:elevation="10dp"
+    android:id="@+id/container_request_card"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout

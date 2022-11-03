@@ -28,7 +28,7 @@
 
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             />
 
         <TextView
@@ -92,21 +92,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
-                    android:text="😴 Away"
+                    android:text="☝ Available"
+                    android:id="@+id/btn_profile_status_available"
+                    android:layout_marginLeft="15dp"
                     android:textAllCaps="false"
-                    android:id="@+id/btn_profile_status_away"
-                    android:layout_marginLeft="25dp"
                     android:textStyle="bold"/>
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/rounded_button"
-                    android:text="☝ Available"
-                    android:id="@+id/btn_profile_status_available"
+                    android:text="😴 Away"
                     android:alpha="0.5"
-                    android:layout_marginLeft="15dp"
                     android:textAllCaps="false"
+                    android:id="@+id/btn_profile_status_away"
+                    android:layout_marginLeft="25dp"
                     android:textStyle="bold"/>
 
                 <Button
@@ -126,52 +126,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="My Dashboard"
-            app:layout_constraintTop_toBottomOf="@id/hS_ngo_profile"
-            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
-            android:layout_marginTop="30dp"
-            android:id="@+id/tV_ngo_profile_myDashboard"/>
-
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/iV_ngo_profile_achievement"
-            android:src="@drawable/icon_achievement"
-            app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_myDashboard"
-            android:layout_marginLeft="25dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            android:layout_marginTop="30dp"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintLeft_toRightOf="@+id/iV_ngo_profile_achievement"
-            android:text="Achievements"
-            app:layout_constraintTop_toTopOf="@id/iV_ngo_profile_achievement"
-            app:layout_constraintBottom_toBottomOf="@id/iV_ngo_profile_achievement"
-            android:layout_marginLeft="20dp"
-            android:textSize="15sp"
-            android:textColor="@color/fontblue"
-            android:id="@+id/tV_ngo_profile_achievement"/>
-
-        <ImageView
-            android:layout_width="15dp"
-            android:layout_height="15dp"
-            android:src="@drawable/icon_arrow"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iV_ngo_profile_achievement"
-            app:layout_constraintBottom_toBottomOf="@id/iV_ngo_profile_achievement"
-            android:layout_marginRight="25dp"
-            android:rotation="-90"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:text="My Account"
-            app:layout_constraintTop_toBottomOf="@id/iV_ngo_profile_achievement"
-            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
-            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toBottomOf="@id/hS_ngo_profile"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="100dp"
             android:id="@+id/tV_ngo_profile_myAccount"/>
 
         <TextView
@@ -179,8 +138,8 @@
             android:layout_height="wrap_content"
             android:text="Sign Out"
             app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_myAccount"
-            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
-            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="20dp"
             android:textColor="@color/fontblue"
             android:textStyle="bold"
             android:textSize="15sp"
@@ -191,8 +150,8 @@
             android:layout_height="wrap_content"
             android:text="Delete My Account"
             app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_signout"
-            app:layout_constraintLeft_toLeftOf="@id/iV_ngo_profile_dp"
-            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="20dp"
             android:textColor="#b23b3b"
             android:textStyle="bold"
             android:textSize="15sp"
@@ -203,8 +162,9 @@
             android:layout_height="wrap_content"
             android:text="Contact us"
             app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_delete"
-            app:layout_constraintLeft_toLeftOf="@id/tV_ngo_profile_delete"
-            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="100dp"
+            android:layout_marginLeft="20dp"
             android:id="@+id/tV_ngo_profile_contact"/>
 
         <TextView
@@ -214,10 +174,17 @@
             android:textStyle="bold"
             android:textColor="@color/fontblue"
             app:layout_constraintTop_toBottomOf="@id/tV_ngo_profile_contact"
-            app:layout_constraintLeft_toLeftOf="@id/tV_ngo_profile_contact"
-            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_margin="20dp"
             android:textSize="15sp"
-            android:id="@+id/tV_ngo_profile_team_foodify"/>
+            android:id="@+id/tV_ngo_profile_team_foodilize"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_wave3"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

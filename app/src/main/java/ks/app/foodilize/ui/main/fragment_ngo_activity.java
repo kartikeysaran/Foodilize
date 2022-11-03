@@ -58,7 +58,7 @@ public class fragment_ngo_activity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        callData();
+
     }
 
     @Override
@@ -216,5 +216,9 @@ public class fragment_ngo_activity extends Fragment {
         return temp;
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        callData();
+    }
 }

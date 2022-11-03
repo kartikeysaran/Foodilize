@@ -38,10 +38,11 @@ public class fragment_ngo_home extends Fragment {
     SwipeRefreshLayout swipeRefreshLayout;
     RecyclerView rV_request, rV_accepted;
     RequestAdapter requestAdapter;
-    ArrayList<ObjectRequest> arrayList, arrayList1;
+    ArrayList<ObjectRequest> arrayList = new ArrayList<>(), arrayList1 = new ArrayList<>();
     AcceptedCardAdapter acceptedCardAdapter;
 
     public fragment_ngo_home() {
+
 
     }
 
@@ -54,6 +55,7 @@ public class fragment_ngo_home extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //callData();
 
     }
 
@@ -65,9 +67,6 @@ public class fragment_ngo_home extends Fragment {
         rV_request = view.findViewById(R.id.rV_ngo_home_requests);
         rV_accepted = view.findViewById(R.id.rV_accepted_request);
 
-        arrayList = new ArrayList<>();
-        arrayList1 = new ArrayList<>();
-
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -75,23 +74,14 @@ public class fragment_ngo_home extends Fragment {
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
-        rV_request.setOnClickListener(v->{
-            callData();
-        });
 
         return view;
     }
 
     private void callData() {
 
-        for(int i = 0; i < arrayList.size(); i++) {
-            arrayList.remove(i);
-            requestAdapter.notifyItemRemoved(i);
-        }
-        for(int i=0; i<arrayList1.size(); i++) {
-            arrayList1.remove(i);
-            acceptedCardAdapter.notifyItemRemoved(i);
-        }
+        arrayList1 = new ArrayList<>();
+        arrayList = new ArrayList<>();
         Utils.db.collection("requests")
                 .orderBy("time", Query.Direction.DESCENDING)
                 .get()
@@ -134,11 +124,7 @@ public class fragment_ngo_home extends Fragment {
                                 rV_accepted.setLayoutManager(linearLayoutManager2);
                                 acceptedCardAdapter = new AcceptedCardAdapter(arrayList1, getContext());
                                 rV_accepted.setAdapter(acceptedCardAdapter);
-                                final int radius = getResources().getDimensionPixelSize(R.dimen.radius);
-                                final int dotsHeight = getResources().getDimensionPixelSize(R.dimen.dots_height);
-                                final int color = ContextCompat.getColor(getContext(), R.color.pinkdusty);
-                                rV_accepted.addItemDecoration(new DotsIndicatorDecoration(radius, radius * 4, dotsHeight, color, color));
-                                new PagerSnapHelper().attachToRecyclerView(rV_accepted);
+
                             }
                         }
                     }
@@ -146,8 +132,8 @@ public class fragment_ngo_home extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        arrayList.clear();
+    public void onResume() {
+        super.onResume();
+        callData();
     }
 }

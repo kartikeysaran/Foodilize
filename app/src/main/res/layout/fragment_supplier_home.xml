@@ -79,6 +79,7 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:layout_width="match_parent"
+                    android:nestedScrollingEnabled="false"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/tV_supplier_home_request_history"
                     app:layout_constraintLeft_toLeftOf="parent"
