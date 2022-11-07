@@ -12,6 +12,15 @@ public class ObjectRequest implements Serializable {
     private String time;
     private String desc;
     private int quantity; //in kgs
+    private String expiryTime;
+
+    public String getExpiryTime() {
+        return expiryTime;
+    }
+
+    public void setExpiryTime(String expirtTime) {
+        this.expiryTime = expirtTime;
+    }
 
     public String getDesc() {
         return desc;
